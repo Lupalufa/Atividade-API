@@ -1,0 +1,20 @@
+### Rota de Listagem
+
+GET http://localhost:3000/
+Content-Type: application/json
+
+###
+
+##
+
+POST http://localhost:3000
+Content-Type: application/json
+
+{
+    "id": 1,
+    "titulo": "A volta dos que não foram",
+    "autor": "John Wick",
+    "genero": "ação"
+}
+
+###
