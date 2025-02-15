@@ -37,28 +37,6 @@ server.post("/", function(req,res){
     }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Rota para a porta com mensagem de exibição no terminal
 server.listen(port, function(){
     console.log("Iniciando servidor local")

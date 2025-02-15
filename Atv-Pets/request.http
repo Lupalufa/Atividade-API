@@ -1,15 +1,15 @@
 ###
-GET http://localhost:3001/pets
+GET http://localhost:3001/
 Content-Type: application/json
 
 ###
 
 ###
-POST http://localhost:3001/pets
+POST http://localhost:3001
 Content-Type: application/json
 
 {
-    "id": 1,
+    "id": "1",
     "nome": "Princesa",
     "especie": "Rottweiler",
     "raca": "Pura",
@@ -20,7 +20,7 @@ Content-Type: application/json
 ###
 
 ###
-PUT http://localhost:3001/pets/1
+PUT http://localhost:3001/1
 Content-Type: application/json
 
 {
@@ -34,7 +34,7 @@ Content-Type: application/json
 ###
 
 ###
-DELETE http://localhost:3001/pets/1
+DELETE http://localhost:3001/1
 
 ###
 

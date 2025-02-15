@@ -1,15 +1,18 @@
 const express = require("express")
-const dotenv = require("dotenv")
-const server = express()
+const index = express()
 
+//Configuração da dotenv e servidor
+const dotenv = require("dotenv")
+dotenv.config()
+index.use(express.json())
+
+// Porta configurada na .env
 const port = process.env.PORTA
 
-dotenv.config()
-server.use(express.json())
-
+// Banco de dados em array
 const banco_dados = []
 
-server.get("/pets", function(req,res){
+index.get("/", function(req,res){
     try {
         if(banco_dados.length === 0){
             return res.status(200).json({msg: "Não há pets cadastrados aqui"})
@@ -20,7 +23,7 @@ server.get("/pets", function(req,res){
     }
 })
 
-server.post("/pets", function(req,res){
+index.post("/", function(req,res){
     try {
         const {id, nome, especie, raca, status, dono} = req.body
         const novoPet = {id, nome, especie, raca, status, dono}
@@ -31,10 +34,10 @@ server.post("/pets", function(req,res){
     }
 })
 
-server.put("/pets/:id", function(req,res){
+index.put("/:id", function(req,res){
     try {
-        const id = req.params
-        const pet = banco_dados.find(pet => pet.id === id)
+        const id = req.params.id
+        const pet = banco_dados.find(pet => pet.id == id)
         if(!pet){
             return res.status(404).json({msg: "Pet não encontrado"})
         }
@@ -52,9 +55,9 @@ server.put("/pets/:id", function(req,res){
     }
 })
 
-server.delete("/pets/:id", function(req,res){
+index.delete("/:id", function(req,res){
     try {
-        const id = req.params
+        const id = req.params.id
         const index = banco_dados.findIndex(pet => pet.id === id)
         if(index !== -1){
             banco_dados.splice(index, 1)
@@ -68,6 +71,6 @@ server.delete("/pets/:id", function(req,res){
     }
 })
 
-server.listen(port, function(){
+index.listen(3001, function(){
     console.log("Iniciando servidor local")
 })
